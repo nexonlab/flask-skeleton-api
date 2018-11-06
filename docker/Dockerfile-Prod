@@ -1,0 +1,31 @@
+FROM ubuntu:16.04
+
+RUN apt-get update \
+ && apt-get install curl apt-transport-https -y
+
+# Install ODBC Driver
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
+ && curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > /etc/apt/sources.list.d/mssql-release.list
+RUN apt-get update
+RUN ACCEPT_EULA=Y apt-get install msodbcsql17 mssql-tools -y
+RUN echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile
+RUN echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
+
+# Install Python Dependences
+RUN apt-get install python3-pip python3-dev build-essential libssl-dev libffi-dev unixodbc-dev -y
+
+# Upgrade PIP
+RUN pip3 install --upgrade pip
+
+# Create Main Path Application
+RUN mkdir application
+
+# Move App Project for Main Path
+ADD . application/
+
+WORKDIR /application
+
+# Install Python Dependences
+RUN pip3 install -r requirements.txt
+
+CMD ["waitress-serve", "--call", "--listen=0.0.0.0:5000", "app:create_app"]

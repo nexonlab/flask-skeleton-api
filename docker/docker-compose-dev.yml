@@ -1,0 +1,16 @@
+version: '3.5'
+services:
+  flask:
+    container_name: application
+    restart: always
+    build:
+      context: ./docker
+      dockerfile: Dockerfile-Dev
+      args:
+        proxy: "http://username:password@proxy-host:port"
+        sproxy: "http://username:password@proxy-host:port"
+        no_proxy: "localhost,127.0.0.1,127.0.0.0/8,$LOCAL_DOMAIN"
+    volumes:
+      - .:/application
+    ports:
+      - "3000:5000"

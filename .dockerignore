@@ -1,0 +1,11 @@
+.idea
+.gitignore
+.git/
+requeriments.txt
+Dockerfile
+docker-compose.yml
+*.pyc
+__pycache__/
+./app/__pycache__/*
+./app/*/__pycache__/*
+./docker/

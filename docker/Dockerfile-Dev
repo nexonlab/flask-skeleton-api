@@ -1,0 +1,45 @@
+FROM ubuntu:16.04
+
+# Define Config Proxy ENVs
+ARG proxy
+ARG sproxy
+ARG no_proxy
+
+ENV http_proxy="$proxy"
+ENV https_proxy="$sproxy"
+ENV no_proxy="$no_proxy"
+
+# Config Proxy For APT
+RUN touch /etc/apt/apt.conf.d/proxy.conf
+RUN echo Acquire::http::Proxy "http://username:password@proxy-host:port"; > /etc/apt/apt.conf.d/proxy.conf
+RUN echo Acquire::https::Proxy "http://username:password@proxy-host:port"; >> /etc/apt/apt.conf.d/proxy.conf
+
+RUN apt-get update \
+ && apt-get install curl apt-transport-https -y
+
+# Install ODBC Driver
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
+ && curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > /etc/apt/sources.list.d/mssql-release.list
+RUN apt-get update
+RUN ACCEPT_EULA=Y apt-get install msodbcsql17 mssql-tools -y
+RUN echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile
+RUN echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
+
+# Install Python Dependences
+RUN apt-get install python3-pip python3-dev build-essential libssl-dev libffi-dev unixodbc-dev -y
+
+# Upgrade PIP
+RUN pip3 install --upgrade pip
+
+# Create Main Path Application
+RUN mkdir application
+
+# Move App Project for Main Path
+ADD . application/
+
+WORKDIR /application
+
+# Install Python Dependences
+RUN pip3 install -r requirements.txt
+
+CMD ["waitress-serve", "--call", "--listen=0.0.0.0:5000", "app:create_app"]
