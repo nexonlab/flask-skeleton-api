@@ -4,13 +4,14 @@ then
     echo "Parâmetro não definido, ou incorreto, por favor utilize '--help', para ver as opções."
 elif [ $1 == "--help" ]
 then
-    echo "Para iniciar em modo de Desenvolvimento, execute:"
-    echo "      ./docker-app-run.sh --dev"
+    echo "Para iniciar em modo de Desenvolvimento."
+    echo "  command:    ./docker-app-run.sh --dev"
     echo ""
-    echo "Para iniciar ou fazer deploy em Produção, execute:"
-    echo "      ./docker-app-run.sh --prod"
+    echo "Para iniciar ou fazer deploy em Produção."
+    echo "  command:    ./docker-app-run.sh --prod"
 elif [ $1 == "--dev" ]
 then
+    echo "#---------------ATENÇÃO---------------#"
     echo "Iniciando em modo de desenvolvimento..."
     echo ""
     echo "Desconstruindo containers, caso existam..."
