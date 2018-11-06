@@ -36,16 +36,16 @@ Para levantar o ambiente em produção:
 
 ```./docker-app-run.sh --prod```
 
-## *Maintainers* and Contributors
+## Maintainers and Contributors
 
-Este projeto é mantido pelo @devsceuma.
+Este projeto é mantido por [@devsceuma](https://github.com/devsceuma).
 
-**Maintainers:**
+**Maintainers**
 
 [Igor Cavalcanti](https://github.com/cavalcantigor) <br>
 [Atmos Maciel](https://github.com/atmosmps)
 
-**Contribute**
+**Como contribuir**
 
 Qualquer pessoa pode contribuir com este projeto, basta fazer um fork do repositório e submeter Pull Requests; :)
 
