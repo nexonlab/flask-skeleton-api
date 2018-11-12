@@ -34,8 +34,8 @@ RUN pip3 install --upgrade pip
 # Create Main Path Application
 RUN mkdir application
 
-# Move App Project for Main Path
-ADD . application/
+# Copy requirements Project for Main Path
+COPY requirements.txt /application
 
 WORKDIR /application
 
