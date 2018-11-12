@@ -8,7 +8,7 @@ Este é um esqueleto de API construido com Flask e utilizado pelo Núcleo de Tec
 
 ## Como usar isto
 
-**Usando Flask:**
+### Usando Flask
 
 ```export FLASK_APP=app```
 
@@ -18,7 +18,7 @@ Para ativar o modo de Debug faça:
 
 *p.s: é aconselhável que você esteja utilizando uma virtualenv para a execução do projeto.*
 
-**Usando Docker**
+### Usando Docker
 
 Neste projeto existe um arquivo shell script chamado ```docker-app-run.sh```, que facilita a utilização de containers.
 
@@ -40,12 +40,12 @@ Para levantar o ambiente em produção:
 
 Este projeto é mantido por [@devsceuma](https://github.com/devsceuma).
 
-**Maintainers**
+### Maintainers
 
 [Igor Cavalcanti](https://github.com/cavalcantigor) <br>
 [Atmos Maciel](https://github.com/atmosmps)
 
-**Como contribuir**
+### Como contribuir
 
 Qualquer pessoa pode contribuir com este projeto, basta fazer um fork do repositório e submeter Pull Requests; :)
 
