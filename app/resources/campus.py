@@ -1,5 +1,5 @@
 import simplejson
-from flask import (request, make_response, Blueprint, jsonify)
+from flask import (make_response, Blueprint, jsonify)
 from ..controllers import main as main_controller
 from ..errors import ErroInterno, UsoInvalido
 

@@ -17,8 +17,8 @@ def recuperar_campus():
     try:
         result = main_dao.recupera_campus()
         resposta = []
-        for id, descricao in result:
-            resposta.append({"id": id, "descricao": str(descricao).strip()})
+        for id_campus, descricao in result:
+            resposta.append({"id": id_campus, "descricao": str(descricao).strip()})
 
         return resposta
     except ErroInterno as e:
