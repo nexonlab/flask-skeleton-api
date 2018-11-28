@@ -23,8 +23,8 @@ def create_app(test_config=None):
         app.config.from_mapping(test_config)
 
     # registra a blueprint 'resources'
-    from .resources.campus import bp as bp_campus
-    app.register_blueprint(bp_campus)
+    from .resources.main import bp as bp_main
+    app.register_blueprint(bp_main)
 
     db.init_app(app)
     Swagger(app, template_file=os.path.join(os.getcwd(), 'app', 'docs', 'template.yml'), parse=True)

@@ -1,26 +1,46 @@
 from ..errors import ErroInterno, TipoErro
-from ..dao import main as main_dao
+from ..dao.main import mock_dao_function_array, mock_dao_function_database
 
 
 def main_function():
     """Main Function"""
-    return main_dao.main_dao_function()
+    try:
+        array_data = mock_dao_function_array()
+        result = []
+
+        for (k, v) in array_data.items():
+            result.append({
+                k: {
+                    'id': v['id'],
+                    'name': v['name'],
+                    'email': v['email'],
+                    'age': v['age'],
+                    'active': v['active'],
+                    'updated_at': v['updated_at']
+                }
+            })
+
+            return result
+    except ErroInterno as e:
+        raise e
+    except Exception:
+        raise ErroInterno(TipoErro.ERRO_INTERNO.name, payload="Erro ao recuperar Campi disponíveis.")
 
 
 def recuperar_campus():
     """
-    Recupera uma lista de campus com id e descricao a partir do codigo da turma.
+    Description Function
 
-    :return: uma lista de dicionarios com ID e DESCRICAO de cada Campus.
-    :exception ErroInterno
+    :return: type
+    :exception Exception: description Exception Type
     """
     try:
-        result = main_dao.recupera_campus()
-        resposta = []
-        for id_campus, descricao in result:
-            resposta.append({"id": id_campus, "descricao": str(descricao).strip()})
+        array_data = mock_dao_function_database()
+        result = []
+        for field_1, field_2 in array_data:
+            result.append({"field_1": field_1, "field_2": str(field_2).strip()})
 
-        return resposta
+        return result
     except ErroInterno as e:
         raise e
     except Exception:

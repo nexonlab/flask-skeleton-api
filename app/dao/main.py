@@ -1,28 +1,40 @@
 from ..models.db import db
 
 
-def main_dao_function():
+def mock_dao_function_array():
     """Main DAO Function"""
-    return "Hello World"
+
+    result_data = {
+        'user': {
+            'id': 0,
+            'name': 'user_name',
+            'email': 'user@name.com',
+            'age': 0,
+            'active': True,
+            'updated_at': '2018-01-01'
+        }
+    }
+    return result_data
 
 
 # This is an example, remove this when building your project
-def recupera_campus():
+def mock_dao_function_database():
     """
-    Busca os campus a partir do codigo da turma e retorna uma lista de objetos com as informacoes dos campus.
+    Description Function
 
-    :return: uma lista com todos os campus para a qual aquela turma esta aberta.
-    :exception Exception: Lança uma exceção genérica caso ocorra algum erro.
+    :return: type
+    :exception Exception: description Exception Type
     """
+
     try:
         sql = db.select([
-            db.text("EXB5CODCAM, EXB5DESCAM")
+            db.text("FIELD_01, FIELD_02")
         ]).select_from(
-            db.text("EXB5CAMPUT WITH (NOLOCK)")
+            db.text("TABLE_NAME WITH (NOLOCK)")
         )
 
-        resultado = db.engine.execute(sql).fetchall()
+        result = db.engine.execute(sql).fetchall()
 
-        return resultado
+        return result
     except Exception as e:
         raise e
