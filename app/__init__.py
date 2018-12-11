@@ -22,7 +22,7 @@ def create_app(test_config=None):
         # carrega a instancia test_config passada por parametro
         app.config.from_mapping(test_config)
 
-    # registra a blueprint 'resources'
+    # registra as blueprints de resources
     from .resources.campus import bp as bp_campus
     from .resources.aluno import bp as bp_aluno
     app.register_blueprint(bp_campus)

@@ -15,7 +15,7 @@ def recuperar_campus():
         for id_campus, descricao in result:
             resposta.append({"id": id_campus, "descricao": str(descricao).strip()})
 
-        return resposta
+        return result
     except ErroInterno as e:
         raise e
     except Exception:
