@@ -24,7 +24,9 @@ def create_app(test_config=None):
 
     # registra a blueprint 'resources'
     from .resources.campus import bp as bp_campus
+    from .resources.aluno import bp as bp_aluno
     app.register_blueprint(bp_campus)
+    app.register_blueprint(bp_aluno)
 
     db.init_app(app)
     Swagger(app, template_file=os.path.join(os.getcwd(), 'app', 'docs', 'template.yml'), parse=True)

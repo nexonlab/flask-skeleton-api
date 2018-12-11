@@ -1,10 +1,13 @@
 import simplejson
-from flask import (make_response, Blueprint, jsonify)
-from ..controllers import main as main_controller
-from ..errors import ErroInterno, UsoInvalido
+from flask import (make_response, Blueprint, current_app)
+from ..controllers import campus as main_controller
+from ..errors import ErroInterno, UsoInvalido, TipoErro
+from . import generic_handler
 
 
 bp = Blueprint('campus', __name__, url_prefix='/campus')
+bp.register_error_handler(ErroInterno, generic_handler)
+bp.register_error_handler(UsoInvalido, generic_handler)
 
 
 @bp.route('/', methods=('GET',))
@@ -17,22 +20,11 @@ def get_campus():
 
         return response
     except UsoInvalido as e:
+        current_app.logger.error(e)
         raise e
     except ErroInterno as e:
+        current_app.logger.error(e)
         raise e
     except Exception as e:
-        raise e
-
-
-@bp.errorhandler(UsoInvalido)
-def not_found(error):
-    response = jsonify(error.to_dict())
-    response.status_code = error.status_code
-    return response
-
-
-@bp.errorhandler(ErroInterno)
-def internal_server_error(error):
-    response = jsonify(error.to_dict())
-    response.status_code = error.status_code
-    return response
+        current_app.logger.error(e)
+        raise ErroInterno(TipoErro.ERRO_INTERNO.name, payload="Erro ao recuperar campi.")
