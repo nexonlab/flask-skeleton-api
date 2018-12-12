@@ -10,5 +10,5 @@ def generic_handler(error):
     :return: um objeto JSON a ser enviado como resposta para o requisitante.
     """
     response = jsonify(error.to_dict())
-    response.status_code = error.code
+    response.status_code = error.status_code
     return response

@@ -4,9 +4,9 @@ from ..models.db import db
 def recupera_aluno(cpd=None):
     try:
         sql = db.select([
-            db.text("NOME, CPD")
+            db.text("CPD, NOME")
         ]).select_from(
-            db.text("ALUNOS")
+            db.text("ALUNO")
         )
 
         if cpd is not None:

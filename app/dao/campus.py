@@ -3,14 +3,14 @@ from ..models.db import db
 
 def recupera_campus():
     """
-    Busca todos os campu disponíveis.
+    Busca todos os campi disponíveis.
 
     :return: uma lista com todos os campi.
     :exception Exception: Lança uma exceção genérica caso ocorra algum erro.
     """
     try:
         sql = db.select([
-            db.text("ID, DESCRICAO")
+            db.text("CODIGO, DESCRICAO")
         ]).select_from(
             db.text("CAMPUS")
         )

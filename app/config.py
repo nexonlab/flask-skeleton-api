@@ -19,6 +19,7 @@ class DevelopmentConfig(Config):
     params_conn = 'Driver={ODBC Driver 17 for SQL Server};' \
                   'Server=MY_SERVER;' \
                   'Database=MY_DATABASE;' \
+                  'APP=MY_APP;' \
                   'UID=MY_USER;' \
                   'PWD=MY_PASSWORD;'
     SQLALCHEMY_DATABASE_URI = "mssql+pyodbc:///?odbc_connect=%s" % urllib.parse.quote_plus(params_conn)
