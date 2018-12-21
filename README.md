@@ -20,21 +20,12 @@ Para ativar o modo de Debug faça:
 
 ### Usando Docker
 
-Neste projeto existe um arquivo shell script chamado ```docker-app-run.sh```, que facilita a utilização de containers.
+Para subir a aplicação usando docker, basta executar o seguinte comando na raíz do projeto:
 
-Você pode utiliza-lo das seguintes maneiras descritas abaixo.
+```docker-compose up -d --build```
 
-Para ver as opções de ajuda:
-
-```./docker-app-run.sh --help```
-
-Para levantar o ambiente em modo de desenvolvimento:
-
-```./docker-app-run.sh --dev```
-
-Para levantar o ambiente em produção:
-
-```./docker-app-run.sh --prod```
+O arquivo ```docker-compose.yml``` usa o [ceumanti/docker-python-odbc](https://hub.docker.com/r/ceumanti/docker-python-odbc), uma imagem preparada para com configuração de conexão com SQLServer usando a versão 3.6.5 do Python.
+A imagem é extensível e qualquer pessoa pode criar outras imagens a partir dela. Recomendamos que sejam criadas imagens a partir desta, por conta do processo de construção usando Pyenv, que é custosa.
 
 ## Maintainers and Contributors
 
