@@ -9,3 +9,14 @@ services:
     command: bash -c "chmod +x run.sh && ./run.sh"
     ports:
       - "5000:5000"
+
+#  node:
+#    image: node:10.14.2
+#    working_dir: /application
+#    volumes:
+#      - .:/application
+#    depends_on:
+#      - flask
+#    links:
+#      - flask
+#    command: bash -c "chmod +x run.sh && ./run.sh"
