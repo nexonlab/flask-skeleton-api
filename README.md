@@ -2,11 +2,11 @@
 
 Um simples esqueleto de API construido com Flask.
 
-### About
+## About
 
 Este é um esqueleto de API construido com Flask e utilizado pelo Núcleo de Tecnologia e Inovação do Grupo Ceuma (NTI) para a construção de aplicações backend.
 
-### Documentação
+## Documentação
 
 Para acessar a documentação da API, acesse a seguinte rota:
 
@@ -23,13 +23,13 @@ Para isso, basta utilizar as ferramentas existentes e sugeridas pelo *[Blueprint
 
 Afim de facilitar o processe de gerar o HTML, descrevemos ele a seguir.
 
-1. Instale o *Render*
+### 1. Instale o *Render*
 
 Uma das ferramentas sugeridas pelo Blueprint é o [Aglio](https://github.com/danielgtaylor/aglio). Usaremos ele:
 
-``npm install -g aglio```
+```npm install -g aglio```
 
-2. Gere a documentação.
+### 2. Gere a documentação.
 
 Para isso, entre na raíz do projeto e execute o seguinte comando:
 
