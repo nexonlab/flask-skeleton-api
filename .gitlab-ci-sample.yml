@@ -1,52 +1,34 @@
-#image: python:latest
-#
-## Pegar pegar nossa imagem
-## dar um docker-compose up
-#
-## jobs
-#pages:
-#  # Toda vez que algo for commitado e enviado para o repositório(push) os scritps serão execeutados
-#  script:
-#    - echo "Não estamos fazendo nada... ainda."
-#  artifacts:
-#    paths:
-#      - app
-#      - docker
-#  only:
-#    - develop
+image: ceumanti/docker-python-odbc:latest
+
+#Stages:
+#  - config
+#  - build
+#  - test
+#  - deploy
 
 # Development: where the actual coding takes place
 # Staging: where the application is reviewed and tested
 # Production: where the final version of the application is hosted
 
-image: atmosmaciel/docker-python-odbc:latest
-
 stages:
   - config
-#  - build
-#  - test
+  - build
+  - test
+#  - deploy
 
-# jobs
-job_config:
+config:
   stage: config
-  tags:
-    - python
   script:
-    - "apt-get update -qq"
-    - "apt-get install -y python python3 python-dev python3-dev"
-    - echo "Top Five ta Top por enquanto"
+    - echo "Instalando pacotes de requirements.txt necessarios a aplicacao My-App-API..."
+    - pip install -r requirements.txt
 
-#job_build:
-#  stage: build
-#  tags:
-#    - flask
-#  script:
-##    - "pip install -r requirements.txt"
-#    - "pip install flake8"
-#
-#job_test:
-#  stage: test
-#  tags:
-#    - flask
-#  script:
-#    - flake8 app/
+build:
+  stage: build
+  script:
+    - echo "Iniciando aplicacao..."
+    - waitress-serve --call --listen=0.0.0.0:5000 app:create_app
+
+test:
+  stage: test
+  script:
+    - pytest
