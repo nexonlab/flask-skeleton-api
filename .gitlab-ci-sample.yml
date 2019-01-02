@@ -1,0 +1,52 @@
+#image: python:latest
+#
+## Pegar pegar nossa imagem
+## dar um docker-compose up
+#
+## jobs
+#pages:
+#  # Toda vez que algo for commitado e enviado para o repositório(push) os scritps serão execeutados
+#  script:
+#    - echo "Não estamos fazendo nada... ainda."
+#  artifacts:
+#    paths:
+#      - app
+#      - docker
+#  only:
+#    - develop
+
+# Development: where the actual coding takes place
+# Staging: where the application is reviewed and tested
+# Production: where the final version of the application is hosted
+
+image: atmosmaciel/docker-python-odbc:latest
+
+stages:
+  - config
+#  - build
+#  - test
+
+# jobs
+job_config:
+  stage: config
+  tags:
+    - python
+  script:
+    - "apt-get update -qq"
+    - "apt-get install -y python python3 python-dev python3-dev"
+    - echo "Top Five ta Top por enquanto"
+
+#job_build:
+#  stage: build
+#  tags:
+#    - flask
+#  script:
+##    - "pip install -r requirements.txt"
+#    - "pip install flake8"
+#
+#job_test:
+#  stage: test
+#  tags:
+#    - flask
+#  script:
+#    - flake8 app/
