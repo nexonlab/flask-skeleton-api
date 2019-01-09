@@ -1,0 +1,10 @@
+{
+    "full_name": "NTI CEUMA",
+    "email": "nti@ceuma.br",
+    "project_name": "Flask-Skeleton-API",
+    "app_name": "app-name",
+    "project_short_description": "A simple flask skeleton to create apps according to NTI-CEUMA patterns.",
+    "release_date": "2019-01-09",
+    "year": "2019",
+    "version": "1.0.1"
+}

@@ -13,7 +13,7 @@ def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
 
     # modificando prefixo da url
-    app.wsgi_app = PrefixMiddleware(app.wsgi_app, prefix='/app-name')
+    app.wsgi_app = PrefixMiddleware(app.wsgi_app, prefix='{{cookiecutter.app_name}}')
 
     if test_config is None:
         # carrega uma instancia de configuracao
@@ -51,4 +51,5 @@ class PrefixMiddleware(object):
             return self.app(environ, start_response)
         else:
             start_response('404', [('Content-Type', 'text/plain')])
-            return ["Esta URL nao pertence a aplicacao. Por favor, insira o prefixo /app-name.".encode()]
+            return ["Esta URL nao pertence a aplicacao. Por favor, insira o prefixo {{cookiecutter.app-name}}."
+                    .encode()]

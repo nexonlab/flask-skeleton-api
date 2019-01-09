@@ -1,4 +1,4 @@
-from flask import (make_response, Blueprint, current_app, render_template)
+from flask import (Blueprint, current_app, render_template)
 from ..errors import ErroInterno, UsoInvalido, TipoErro
 from . import generic_handler
 
