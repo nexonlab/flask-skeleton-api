@@ -14,7 +14,7 @@ stages:
   - config
   - build
   - test
-#  - deploy
+  - deploy
 
 config:
   stage: config
@@ -32,3 +32,9 @@ test:
   stage: test
   script:
     - pytest
+
+deploy:
+  stage: deploy
+  script:
+    - docker-compose down
+    - docker-compose up -d --build
