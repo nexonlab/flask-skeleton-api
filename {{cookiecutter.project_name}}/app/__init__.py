@@ -6,6 +6,10 @@ from flasgger import Swagger
 
 import os
 
+__author__ = {{cookiecutter.author}}
+__email__ = {{cookiecutter.email}}
+__version__ = {{cookiecutter.version}}
+
 
 def create_app(test_config=None):
 

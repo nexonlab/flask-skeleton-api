@@ -1,0 +1,11 @@
+version: '3.5'
+services:
+  flask:
+    image: ceumanti/docker-python-odbc:latest
+    container_name: {{cookiecutter.app_name}}
+    restart: on-failure:10
+    volumes:
+      - .:/application
+    command: bash -c "chmod +x run.sh && ./run.sh"
+    ports:
+      - "5000:5000"

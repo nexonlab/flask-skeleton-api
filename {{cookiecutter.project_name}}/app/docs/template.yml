@@ -1,0 +1,10 @@
+swagger: '3.0'
+info:
+  title: 'Pos-Graduacao-API'
+  description: 'API responsável pelo processo de inscrição do candidato nos cursos de Pós-Graduação.'
+  version: '0.1'
+  contact:
+    name: Created by NTI - Grupo CEUMA
+    url: https://www.extranet.ceuma.br
+    email: nti@ceuma.br
+basePath: "/pos-graduacao-api"
