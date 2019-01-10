@@ -6,7 +6,19 @@ Um simples esqueleto de API construido com Flask.
 
 Este é um esqueleto de API construido com Flask e utilizado pelo Núcleo de Tecnologia e Inovação do Grupo Ceuma (NTI) para a construção de aplicações backend.
 
-## Documentação
+## Gerar esqueleto utilizando `cookiecutter`
+
+O `cookiecutter` é um utilitário em linha de comando utilizando para gerar templates de projetos criados utilizando a ferramenta.
+Para gerar o projeto a partir deste template, você deverá ter o pacote `cookiecutter` instalado no seu python.
+
+1. Instale o `cookiecutter` com o comando `pip install cookiecutter` (aconselhamos o uso de um ambiente virtual python).
+2. Execute o comando `cookiecutter https://github.com/devsceuma/flask-skeleton-api` para prosseguir com a geração do template
+no diretório atual da execução.
+3. Uma vez baixado o projeto, o `cookiecutter` será responsável por gerar o template e para isso irá pedir algumas informações,
+entre elas "project_name" que é o nome da pasta do projeto e "app_name" que será o nome da aplicação e prefixo utilizado pela API
+em suas rotas.
+
+## Documentação da API
 
 Para acessar a documentação da API, acesse a seguinte rota:
 
