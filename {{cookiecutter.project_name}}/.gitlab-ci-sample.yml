@@ -19,7 +19,7 @@ stages:
 config:
   stage: config
   script:
-    - echo "Instalando pacotes de requirements.txt necessarios a aplicacao My-App-API..."
+    - echo "Instalando pacotes de requirements.txt necessarios a aplicacao {{cookiecutter.app_name}}..."
     - pip install -r requirements.txt
 
 build:

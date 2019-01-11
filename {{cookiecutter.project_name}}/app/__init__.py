@@ -2,9 +2,7 @@ from flask import Flask
 from flask_cors import CORS
 from .models.db import db
 from .config import DevelopmentConfig
-from flasgger import Swagger
 
-import os
 
 __author__ = "{{cookiecutter.author}}"
 __email__ = "{{cookiecutter.email}}"
@@ -35,7 +33,6 @@ def create_app(test_config=None):
     app.register_blueprint(bp_docs)
 
     db.init_app(app)
-    Swagger(app, template_file=os.path.join(os.getcwd(), 'app', 'docs', 'template.yml'), parse=True)
     CORS(app)
 
     return app

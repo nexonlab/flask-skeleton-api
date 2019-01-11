@@ -9,10 +9,6 @@ class Config(object):
     SQLALCHEMY_RECORD_QUERIES = True
     FLASK_SLOW_DB_QUERY_TIME = 0.2
     JSON_AS_ASCII = False
-    SWAGGER = {
-        'title': 'Swagger',
-        'doc_dir': os.path.join(os.getcwd(), 'app', 'docs')
-    }
 
 
 class DevelopmentConfig(Config):
@@ -30,22 +26,3 @@ class TesteConfig(Config):
     DEBUG = True
     TESTING = True
     pass
-
-
-class CeumaConfig(Config):
-    DEBUG = False
-    pass
-
-
-class EuroConfig(Config):
-    DEBUG = False
-    pass
-
-
-class FamazConfig(Config):
-    DEBUG = False
-    pass
-
-
-class SQLiteConfig(Config):
-    SQLALCHEMY_DATABASE_URI = "sqlite:///%steste.db" % os.path.join(os.getcwd(), "instance/")

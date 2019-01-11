@@ -3,7 +3,6 @@ atomicwrites==1.2.1
 attrs==18.2.0
 click==6.7
 coverage==4.5.1
-flasgger==0.9.1
 Flask==1.0.2
 Flask-Cors==3.0.6
 Flask-RESTful==0.3.6
