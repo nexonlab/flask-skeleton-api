@@ -19,7 +19,7 @@ py==1.6.0
 pyodbc==4.0.24
 pytest==3.8.0
 pytz==2018.5
-PyYAML==3.13
+PyYAML>=4.2b1
 simplejson==3.16.0
 six==1.11.0
 SQLAlchemy==1.2.11
