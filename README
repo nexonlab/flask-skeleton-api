@@ -27,7 +27,7 @@ http://localhost:5000/app-name/apidocs/
 ```
 
 A API possui um arquivo de documentação *default* utilizando a especificação do *[Blueprint](https://apiblueprint.org/)*.
-O arquivo está em: *./app/docs/api-blueprint-sample.apib*.
+O arquivo está em: `./app/docs/api-blueprint-sample.apib`.
 
 Preferimos deixar a responsabilidade da renderização do template HTML para o desenvolvedor.
 Toda vez que houver atualizações na especificação de endpoints da sua API, será de responsabilidade do desenvolvedor realizar a atualização e renderização do documento estático.
@@ -37,7 +37,7 @@ Afim de facilitar o processe de gerar o HTML, descrevemos ele a seguir.
 
 ### 1. Instale o *Render*
 
-Uma das ferramentas sugeridas pelo Blueprint é o [Aglio](https://github.com/danielgtaylor/aglio). Usaremos ele:
+Uma das ferramentas sugeridas pelo *Blueprint* é o [Aglio](https://github.com/danielgtaylor/aglio). Usaremos ele:
 
 ```npm install -g aglio```
 
@@ -49,21 +49,49 @@ Para isso, entre na raíz do projeto e execute o seguinte comando:
 aglio -i ./app/docs/api-blueprint-sample.apib --theme-full-width --no-theme-condense -o ./app/templates/apidocs/index.html
 ```
 
-O Output será um arquivo ```ìndex.html``` dentro de ```./app/templates/apidocs/index.html```.
+O Output será um arquivo ```index.html``` dentro de ```./app/templates/apidocs/index.html```.
 
-*p.s: O arquivo base para esta documentação, foi retirado de: [Definindo APIs com o API Blueprint](https://eltonminetto.net/post/2017-06-29-definindo-apis-com-api-blueprint/)*.
+*p.s: O arquivo base para esta documentação foi retirado de: [Definindo APIs com o API Blueprint](https://eltonminetto.net/post/2017-06-29-definindo-apis-com-api-blueprint/)*.
 
 ## Como usar isto
 
 ### Usando Flask
 
-```export FLASK_APP=app```
+Antes de iniciar a sua aplicação, você deve informar ao seu terminal qual a aplicação `flask` que será iniciada.
+Para isto, você deverar *setar* uma variável de ambiente de nome `FLASK_APP` e, no nosso caso, valor igual a `app`.
+Neste caso, o valor `app` refere-se ao módulo python onde está contida a aplicação.
 
-Para ativar o modo de Debug faça:
+> No Linux:
+```bash
+export FLASK_APP=app
+```
 
-```export FLASK_ENV=development```
+> No Windows:
+```bash
+set FLASK_APP=app
+```
 
-*p.s: é aconselhável que você esteja utilizando uma virtualenv para a execução do projeto.*
+Para ativar o modo de debug uma outra variável de ambiente deverá ser setada, desta vez com nome
+`FLASK_ENV` e valor `development`. Esta informação informa ao `flask` que ele
+deverá iniciar a aplicação em modo de desenvolvimento, com o *stacktrace* de erros
+e outras funcionalidades.
+
+> No Linux:
+```
+export FLASK_ENV=development
+```
+
+> No Windows:
+```
+set FLASK_ENV=development
+```
+
+#### Virtualenv
+
+É aconselhável que você esteja utilizando uma virtualenv para a execução do projeto. 
+No [virtualenvwrapper][1] você encontra a documentação de um utilitário para utilização de ambientes
+virtuais com o python. Porém, se você não deseja instalar o utilitário, pode utilizar
+apenas o [virtualenv][2] a fim de isolar a instalação dos pacotes do python contido em sua máquina.
 
 ### Usando Docker
 
@@ -71,8 +99,16 @@ Para subir a aplicação usando docker, basta executar o seguinte comando na ra�
 
 ```docker-compose up -d --build```
 
-O arquivo ```docker-compose.yml``` usa o [ceumanti/docker-python-odbc](https://hub.docker.com/r/ceumanti/docker-python-odbc), uma imagem preparada para com configuração de conexão com SQLServer usando a versão 3.6.5 do Python.
-A imagem é extensível e qualquer pessoa pode criar outras imagens a partir dela. Recomendamos que sejam criadas imagens a partir desta, por conta do processo de construção usando Pyenv, que é custosa.
+O arquivo ```docker-compose.yml``` usa o [ceumanti/docker-python-odbc](https://hub.docker.com/r/ceumanti/docker-python-odbc), 
+uma imagem preparada para com configuração de conexão com SQLServer usando a versão 3.6.5 do 
+Python. A imagem é extensível e qualquer pessoa pode criar outras imagens a partir dela. 
+Recomendamos que sejam criadas imagens a partir desta, por conta do processo de construção usando Pyenv, que é custosa.
+
+No processo de contrução e *build* da imagem o *script* `run.sh` será executado. Este *script*, que se
+encontra na raíz do projeto, é responsável por efetuar o download e instalação dos pacotes
+python, além da execução do servidor `waitress-serve` para rodar a aplicação. A aplicação
+dockerizada está pronta para produção (vide utilização de servidor preparado para tal propósito)
+e o modo de desenvolvimento está desativado.
 
 ## Maintainers and Contributors
 
@@ -90,3 +126,7 @@ Qualquer pessoa pode contribuir com este projeto, basta fazer um fork do reposit
 ## [License](./LICENSE)
 
 Este projeto está sob uma Licença [Apache License 2.0](https://choosealicense.com/licenses/apache-2.0)
+
+
+[1]: <https://virtualenvwrapper.readthedocs.io/en/latest/> "Virtualenvwrapper"
+[2]: <https://virtualenv.pypa.io/en/latest/> "Virtualenv"
