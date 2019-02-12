@@ -33,7 +33,7 @@ Preferimos deixar a responsabilidade da renderização do template HTML para o d
 Toda vez que houver atualizações na especificação de endpoints da sua API, será de responsabilidade do desenvolvedor realizar a atualização e renderização do documento estático.
 Para isso, basta utilizar as ferramentas existentes e sugeridas pelo *[Blueprint](https://apiblueprint.org/)*.
 
-Afim de facilitar o processe de gerar o HTML, descrevemos ele a seguir.
+Afim de facilitar o processo de gerar o HTML, descrevemos ele a seguir.
 
 ### 1. Instale o *Render*
 
@@ -62,12 +62,12 @@ Para isto, você deverar *setar* uma variável de ambiente de nome `FLASK_APP` e
 Neste caso, o valor `app` refere-se ao módulo python onde está contida a aplicação.
 
 > No Linux:
-```bash
+```
 export FLASK_APP=app
 ```
 
 > No Windows:
-```bash
+```
 set FLASK_APP=app
 ```
 
@@ -110,18 +110,50 @@ python, além da execução do servidor `waitress-serve` para rodar a aplicaçã
 dockerizada está pronta para produção (vide utilização de servidor preparado para tal propósito)
 e o modo de desenvolvimento está desativado.
 
+### Integração com SQL Server
+
+Esta é uma seção especial destinada a esclarecer alguns processos necessários à utilização
+da aplicação em conjunto com o SQL Server.
+
+#### Driver ODBC
+
+> Linux:
+
+Para baixar o driver, você deverá a página
+[*ODBC Driver for SQL Server - Linux*](https://docs.microsoft.com/pt-br/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-2017)
+e seguir o tutorial.
+
+> Windows:
+
+Para baixar o driver, você deverá a página
+[*ODBC Driver for SQL Server - Windows*](https://docs.microsoft.com/pt-br/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-2017)
+e seguir o tutorial.
+
+#### Pacote `pyodbc`
+
+Para prosseguir com a instalação, certifique-se de que todo o processo anterior foi corretamente
+efetuado. Após isso, o comando
+
+```
+pip install pyodbc
+```
+
+deverá instalar o pacote `pyodbc` que
+será utilizado em conjunto com o driver para acesso à base.
+
 ## Maintainers and Contributors
 
 Este projeto é mantido por [@devsceuma](https://github.com/devsceuma).
 
 ### Maintainers
 
-[Igor Cavalcanti](https://github.com/cavalcantigor) <br>
-[Atmos Maciel](https://github.com/atmosmps)
+[Atmos Maciel](https://github.com/atmosmps) <br>
+[Igor Cavalcanti](https://github.com/cavalcantigor)
+
 
 ### Como contribuir
 
-Qualquer pessoa pode contribuir com este projeto, basta fazer um fork do repositório e submeter Pull Requests; :)
+Qualquer pessoa pode contribuir com este projeto, basta fazer um fork do repositório e submeter Pull Requests :)
 
 ## [License](./LICENSE)
 
