@@ -86,6 +86,21 @@ export FLASK_ENV=development
 set FLASK_ENV=development
 ```
 
+### Usando localmente com Cookiecutter
+
+O cookiecutter permite que o usuário crie projetos a partir de templates, como este Skeleton por exemplo.
+
+1. Para isso você precisa instalar o cookiecutter conforme a [documentação](https://cookiecutter.readthedocs.io/en/latest/index.html) sugere.
+De preferência crie um *virtual-env* para isto.
+
+`pip install cookiecutter`
+
+2. Depois gere o novo projeto a partir deste repositório.
+
+`cookiecutter gh:devsceuma/flask-skeleton-api`
+
+Para ver mais formas de uso, visite a sessao de *usage* do [cookiecutter](https://cookiecutter.readthedocs.io/en/latest/usage.html).
+
 #### Virtualenv
 
 É aconselhável que você esteja utilizando uma virtualenv para a execução do projeto. 
