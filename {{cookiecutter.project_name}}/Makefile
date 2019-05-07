@@ -3,6 +3,9 @@ container=app
 up:
 	docker-compose up -d
 
+up-debug:
+	docker-compose up
+
 build:
 	docker-compose rm -vsf
 	docker-compose down -v --remove-orphans
