@@ -1,4 +1,5 @@
-.idea
+.idea/
+.vscode/
 .gitignore
 .git/
 requeriments.txt
