@@ -16,7 +16,7 @@ down:
 	docker-compose down
 
 run:
-	docker-compose run {container} php index.php
+	docker-compose run {container} /bin/bash
 
 jumpin:
 	docker-compose run {container} bash
