@@ -1,6 +1,6 @@
 version: '3.5'
 services:
-  flask:
+  app:
     image: ceumanti/docker-python-odbc:latest
     container_name: {{cookiecutter.app_name}}
     restart: on-failure:10
