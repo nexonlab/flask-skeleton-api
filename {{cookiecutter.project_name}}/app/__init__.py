@@ -1,4 +1,7 @@
-from flask import Flask
+import logging
+from flask import Flask, request, current_app
+from datetime import datetime
+from logging import StreamHandler
 from flask_cors import CORS
 from .models.db import db
 from .config import DevelopmentConfig
@@ -9,10 +12,32 @@ __email__ = "{{cookiecutter.email}}"
 __version__ = "{{cookiecutter.version}}"
 
 
+def log_request():
+    try:
+        # caso mude o WSGI, entao isso aqui devera mudar tambem
+        logger = logging.getLogger('waitress')
+        logger.setLevel(logging.INFO)
+        logger.info("\t{asctime} \t {level} \t {ip} \t {method} \t {url}".format(asctime=datetime.now().
+                                                                                 strftime("%d-%m-%Y %H:%M:%S"),
+                                                                                 level="INFO",
+                                                                                 ip=request.remote_addr,
+                                                                                 method=str(request.method),
+                                                                                 url=request.path))
+    except Exception as e:
+        current_app.logger.error(e)
+
+
 def create_app(test_config=None):
 
     # cria e configura a aplicacao
     app = Flask(__name__, instance_relative_config=True)
+
+    # configura log da aplicacao
+    formatter = logging.Formatter("[%(asctime)s] {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s")
+    handler = StreamHandler()
+    handler.setLevel(logging.ERROR)
+    handler.setFormatter(formatter)
+    app.logger.addHandler(handler)
 
     # modificando prefixo da url
     app.wsgi_app = PrefixMiddleware(app.wsgi_app, prefix='/{{cookiecutter.app_name}}')
@@ -34,6 +59,9 @@ def create_app(test_config=None):
 
     db.init_app(app)
     CORS(app)
+
+    # registrando log antes da requisicao
+    app.before_request(log_request)
 
     return app
 
