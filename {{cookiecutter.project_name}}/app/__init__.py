@@ -33,7 +33,7 @@ def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
 
     # configura log da aplicacao
-    formatter = logging.Formatter("[%(asctime)s] {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s")
+    formatter = logging.Formatter("[%(asctime)s] \{%(pathname)s:%(lineno)d\} %(levelname)s - %(message)s")
     handler = StreamHandler()
     handler.setLevel(logging.ERROR)
     handler.setFormatter(formatter)
