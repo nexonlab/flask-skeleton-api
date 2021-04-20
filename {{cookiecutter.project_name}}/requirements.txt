@@ -15,7 +15,7 @@ marshmallow==2.15.6
 mistune==0.8.3
 more-itertools==4.3.0
 pluggy==0.7.1
-py==1.6.0
+py==1.10.0
 pyodbc==4.0.24
 pytest==3.8.0
 pytz==2018.5
